@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,14 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
-    internal interface Scenes
+    public interface IScenes
     {
+        
         public void Update()
         {
 
         }
-        public void Load()
+        public void Load(Game game)
         {
 
         }

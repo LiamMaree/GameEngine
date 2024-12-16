@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework.Graphics;
+﻿using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace GameEngine
 {
-    internal class SceneManager
+    public class SceneManager
     {
-        Dictionary<String, Scenes> Smanager;
+        Dictionary<String, IScenes> sManager;
         String currentScene;
         public SceneManager()
         {
-            
+            sManager = new Dictionary<String, IScenes>();
         }
         public void setCurrentScene(String currentScene)
         {
@@ -21,23 +22,23 @@ namespace GameEngine
         }
         public void Update()
         {
-            Smanager[currentScene].Update();
+            sManager[currentScene].Update();
         }
-        public void Load()
+        public void Load(Game game)
         {
-            Smanager[currentScene].Load();
+            sManager[currentScene].Load(game);
         }
         public void Draw(SpriteBatch batch)
         {
-            Smanager[currentScene].Draw(batch);
+            sManager[currentScene].Draw(batch);
         }
-        public void AddScene(String sceneName,Scenes scene)
+        public void AddScene(String sceneName,IScenes scene)
         {
-            Smanager.Add(sceneName, scene);
+            sManager.Add(sceneName, scene);
         }
         public void RemoveScene(String sceneName)
         {
-            Smanager.Remove(sceneName);
+            sManager.Remove(sceneName);
         }
     }
 }

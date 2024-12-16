@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,7 +10,7 @@ namespace GameEngine
 {
 
     //Handles all User Inputs
-    internal class InputHandler
+    public class InputHandler
     {
         private KeyboardState currentKeyboardState;
         private KeyboardState previousKeyboardState;
@@ -22,7 +23,8 @@ namespace GameEngine
             previousMouseState = Mouse.GetState();
         }
         
-        public bool isKeyPressed(Keys pressedKey)
+        
+        public bool IsKeyPressed(Keys pressedKey)
         {
             bool temp = false;
             currentKeyboardState = Keyboard.GetState();
@@ -33,33 +35,69 @@ namespace GameEngine
             previousKeyboardState = currentKeyboardState;
             return temp;
         }
-        public bool isMousePressed(bool isLeft)
+        public bool IsMousePressed(bool isLeft)
         {
             bool temp = false;
             currentMouseState = Mouse.GetState();
-            if (currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed)
+            if(isLeft == true)
             {
-                temp = true;
-            }
-            previousMouseState = currentMouseState;
-            return temp;
-        }
-        public bool isKeyHeld(Keys pressedKey)
-        {
-            bool temp;
-            
-            if (Keyboard.GetState().IsKeyDown(pressedKey))
-            {
-                temp = true;
+                if (currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed)
+                {
+                    temp = true;
+                }
             }
             else
             {
-                temp = false;
+                if (currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Pressed)
+                {
+                    temp = true;
+                }
             }
+            
+            previousMouseState = currentMouseState;
             return temp;
         }
+        public bool IsKeyHeld(Keys pressedKey)
+        {
+            bool temp = false;
+            currentKeyboardState = Keyboard.GetState();
+            if (currentKeyboardState.IsKeyDown(pressedKey) && previousKeyboardState.IsKeyDown(pressedKey))
+            {
+                temp = true;
+            }
+            previousKeyboardState = currentKeyboardState;
+            return temp;
+        }
+        public bool IsMouseHeld(bool isLeft)
+        {
+            bool temp = false;
+            currentMouseState = Mouse.GetState();
+            if (isLeft == true)
+            {
+                if (currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed)
+                {
+                    temp = true;
+                }
+                
+            }
+            else
+            {
+                if (currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Pressed)
+                {
+                    temp = true;
+                }
+            }
 
-        
+            previousMouseState = currentMouseState;
+            return temp;
+        }
+        public Vector2 GetMousePosition()
+        {
+            currentMouseState = Mouse.GetState();
+            return new Vector2(currentMouseState.X, currentMouseState.Y);
+        }
+
+
 
     }
 }

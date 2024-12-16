@@ -9,7 +9,10 @@ namespace gameEngineTest
     {
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
-        Sprites circle;
+        TestScene test = new TestScene();
+        EmptyScene empty = new EmptyScene();
+        public static SceneManager sceneManager;
+        
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -22,14 +25,22 @@ namespace gameEngineTest
             // TODO: Add your initialization logic here
             _graphics.PreferredBackBufferHeight = 800;
             _graphics.PreferredBackBufferWidth = 800;
+            sceneManager = new SceneManager();
+            sceneManager.AddScene("TEST", test);
+            sceneManager.AddScene("EMPTY", empty);
+            sceneManager.setCurrentScene("TEST");
+
             base.Initialize();
         }
 
         protected override void LoadContent()
         {
             _spriteBatch = new SpriteBatch(GraphicsDevice);
+            
 
-            circle = new Sprites(this.Content.Load<Texture2D>("Image1"), new Vector2(0, 0), 1);
+
+
+            sceneManager.Load(this);
             // TODO: use this.Content to load your game content here
         }
 
@@ -37,7 +48,7 @@ namespace gameEngineTest
         {
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed || Keyboard.GetState().IsKeyDown(Keys.Escape))
                 Exit();
-
+            sceneManager.Update();
             // TODO: Add your update logic here
 
             base.Update(gameTime);
@@ -46,7 +57,7 @@ namespace gameEngineTest
         protected override void Draw(GameTime gameTime)
         {
             GraphicsDevice.Clear(Color.CornflowerBlue);
-            circle.Draw(_spriteBatch);
+            sceneManager.Draw(_spriteBatch);
             // TODO: Add your drawing code here
 
             base.Draw(gameTime);
