@@ -5,32 +5,33 @@ using System.Text;
 using System.Threading.Tasks;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+
 namespace GameEngine
 {
     public class Sprites
     {
-        private Texture2D texture;
-        Vector2 position;
-        int scale;
+        protected Texture2D texture;
+        public Vector2 position { get; set; }
+        public Vector2 size { get; set; }
 
         //Creates Rectangle of Sprite and updates it to the sprites current position
-        Rectangle destRect
+        public Rectangle destRect
         {
             get
             {
-                return new Rectangle((int)position.X, (int)position.Y, 50 * scale, 50 * scale);
+                return new Rectangle((int)(position.X - (size.X/2)), (int)(position.Y - (size.Y / 2)),(int)size.X, (int)size.Y);
             }
         }
-        public Sprites(Texture2D texture,Vector2 position,int scale)
+        public Sprites(Texture2D texture,Vector2 position,Vector2 size)
         {
             this.texture = texture;
             this.position = position;
-            this.scale = scale;
+            this.size = size;
         }
 
-        public void Update()
+        public virtual void Update(GameTime gameTime)
         {
-
+            
         }
         public void Load()
         {
@@ -38,11 +39,13 @@ namespace GameEngine
         }
         public void Draw(SpriteBatch batch)
         {
-            batch.Begin();
+
+            
             batch.Draw(texture, destRect, Color.White);
-            batch.End();
+            
         }
 
-
+        
+       
     }     
 }
