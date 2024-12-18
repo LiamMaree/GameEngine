@@ -11,7 +11,7 @@ namespace GameEngine
     public interface IScenes
     {
         
-        public void Update(GameTime gameTime)
+        public void Update()
         {
 
         }

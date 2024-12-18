@@ -1,9 +1,8 @@
-﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Input;
+﻿using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Numerics;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -18,12 +17,10 @@ namespace GameEngine
 
         private MouseState currentMouseState;
         private MouseState previousMouseState;
-        private Matrix translation;
         public InputHandler()
         {
             previousKeyboardState = Keyboard.GetState();
             previousMouseState = Mouse.GetState();
-            translation = Matrix.CreateTranslation(0f, 0f, 0f);
         }
         
         
@@ -44,14 +41,14 @@ namespace GameEngine
             currentMouseState = Mouse.GetState();
             if(isLeft == true)
             {
-                if (currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released)
+                if (currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed)
                 {
                     temp = true;
                 }
             }
             else
             {
-                if (currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released)
+                if (currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Pressed)
                 {
                     temp = true;
                 }
@@ -94,16 +91,12 @@ namespace GameEngine
             previousMouseState = currentMouseState;
             return temp;
         }
-        public Rectangle GetMouseRectangle()
+        public Vector2 GetMousePosition()
         {
             currentMouseState = Mouse.GetState();
-            Vector2 transformedMousePos = Vector2.Transform(new Vector2(currentMouseState.X, currentMouseState.Y), Matrix.Invert(translation));
-            return new Rectangle((int)transformedMousePos.X,(int)transformedMousePos.Y,30,30);
+            return new Vector2(currentMouseState.X, currentMouseState.Y);
         }
-        public void setCameraTranslation(Matrix translation)
-        {
-            this.translation = translation;
-        }
+
 
 
     }

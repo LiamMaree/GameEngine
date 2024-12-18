@@ -11,16 +11,18 @@ namespace gameEngineTest
 {
     internal class EmptyScene: IScenes
     {
-
-        InputHandler inputHandler;
-        public EmptyScene(InputHandler inputHandler)
+        InputHandler inputHandler = new InputHandler();
+        public EmptyScene()
         {
-            this.inputHandler = inputHandler;
+
         }
-
-        public void Update(GameTime gameTime)
+        
+        public void Update()
         {
-            
+            if (inputHandler.IsKeyPressed(Keys.Space))
+            {
+                Game1.sceneManager.setCurrentScene("TEST");
+            }
         }
         public void Load(Game1 game)
         {

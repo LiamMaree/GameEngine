@@ -20,9 +20,9 @@ namespace GameEngine
         {
             this.currentScene = currentScene;
         }
-        public void Update(GameTime gameTime)
+        public void Update()
         {
-            sManager[currentScene].Update(gameTime);
+            sManager[currentScene].Update();
         }
         public void Load(Game game)
         {
