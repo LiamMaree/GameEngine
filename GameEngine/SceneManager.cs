@@ -10,13 +10,13 @@ namespace GameEngine
 {
     public class SceneManager
     {
-        Dictionary<String, IScenes> sManager;
-        String currentScene;
+        protected Dictionary<String, IScenes> sManager;
+        protected String currentScene;
         public SceneManager()
         {
             sManager = new Dictionary<String, IScenes>();
         }
-        public void setCurrentScene(String currentScene,Game game)
+        public void SetCurrentScene(String currentScene,Game game)
         {
             this.currentScene = currentScene;
             sManager[currentScene].Initialize(game);

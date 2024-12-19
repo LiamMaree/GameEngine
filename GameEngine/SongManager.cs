@@ -11,9 +11,9 @@ namespace GameEngine
 {
     public class SongManager
     {
-        Dictionary<String, Song> songManager;
-        String currentSong;
-        int volume;
+        protected Dictionary<String, Song> songManager;
+        protected String currentSong;
+        protected int volume;
         
         
         public SongManager(int volume)
@@ -22,11 +22,11 @@ namespace GameEngine
             this.volume = volume;
             MediaPlayer.Volume = volume;
         }
-        public void setCurrentSong(String currentSound)
+        public void SetCurrentSong(String currentSound)
         {
             this.currentSong = currentSound;
         }
-        public void setVolume(int volume)
+        public void SetVolume(int volume)
         {
             this.volume = volume;
         }
@@ -38,7 +38,7 @@ namespace GameEngine
         {
             songManager.Remove(songName);
         }
-        public void playCurrentSong(bool repeating)
+        public void PlayCurrentSong(bool repeating)
         {
             if (MediaPlayer.State != MediaState.Playing)
             {
@@ -50,14 +50,14 @@ namespace GameEngine
             }
             
         }
-        public void pauseCurrentSong()
+        public void PauseCurrentSong()
         {           
             if (MediaPlayer.State == MediaState.Playing)  // Only pause if playing
             {
                 MediaPlayer.Pause();
             }
         }
-        public void resumeCurrentSong()
+        public void ResumeCurrentSong()
         {
             
             if (MediaPlayer.State == MediaState.Paused)  // Only resume if paused
@@ -65,7 +65,7 @@ namespace GameEngine
                 MediaPlayer.Resume();
             }
         }
-        public void stopCurrentSong()
+        public void StopCurrentSong()
         {
             MediaPlayer.Stop();  // Stops the song and resets the state
         }

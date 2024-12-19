@@ -11,7 +11,7 @@ namespace gameEngineTest
         private GraphicsDeviceManager _graphics;
         private SpriteBatch _spriteBatch;
         
-        public static SceneManager sceneManager;
+        public  SceneManager sceneManager;
         
         public Game1()
         {
@@ -29,10 +29,10 @@ namespace gameEngineTest
             sceneManager = new SceneManager();
             
 
-            TestScene test = new TestScene(_graphics);
+            TestScene test = new(_graphics);
             
             sceneManager.AddScene("TEST", test);    
-            sceneManager.setCurrentScene("TEST",this);
+            sceneManager.SetCurrentScene("TEST",this);
 
             base.Initialize();
         }

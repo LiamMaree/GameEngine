@@ -13,7 +13,7 @@ namespace gameEngineTest
     internal class Player : Sprites
     {
         InputHandler inputHandler;
-        public Player(Texture2D texture, Vector2 position, Vector2 size,InputHandler inputHandler) : base(texture,position,size)
+        public Player(String name,String textureName, Vector2 position, Vector2 size,InputHandler inputHandler) : base(name,textureName,position,size)
         {
             
             this.inputHandler = inputHandler;

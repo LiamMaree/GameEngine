@@ -11,7 +11,7 @@ namespace GameEngine
 {
     public class SoundEffectManager
     {
-        Dictionary<String, SoundEffect> soundManager;
+        protected Dictionary<String, SoundEffect> soundManager;
         
         public SoundEffectManager()
         {
@@ -26,11 +26,11 @@ namespace GameEngine
         {
             soundManager.Remove(soundName);
         }
-        public void playSound(String soundName)
+        public void PlaySound(String soundName)
         {
             soundManager[soundName].Play();
         }
-        public SoundEffectInstance getSoundInstance(String soundName)
+        public SoundEffectInstance GetSoundInstance(String soundName)
         {
             return soundManager[soundName].CreateInstance();
         }

@@ -14,12 +14,12 @@ namespace GameEngine
     //Handles all User Inputs
     public class InputHandler
     {
-        private KeyboardState currentKeyboardState;
-        private KeyboardState previousKeyboardState;
+        protected KeyboardState currentKeyboardState;
+        protected KeyboardState previousKeyboardState;
 
-        private MouseState currentMouseState;
-        private MouseState previousMouseState;
-        private Matrix translation;
+        protected MouseState currentMouseState;
+        protected MouseState previousMouseState;
+        protected Matrix translation;
         public InputHandler()
         {
             previousKeyboardState = Keyboard.GetState();
