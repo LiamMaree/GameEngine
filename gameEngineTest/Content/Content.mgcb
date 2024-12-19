@@ -13,6 +13,12 @@
 
 #---------------------------------- Content ---------------------------------#
 
+#begin effect.mp3
+/importer:Mp3Importer
+/processor:SoundEffectProcessor
+/processorParam:Quality=Best
+/build:effect.mp3
+
 #begin Image1.png
 /importer:TextureImporter
 /processor:TextureProcessor
@@ -24,4 +30,10 @@
 /processorParam:MakeSquare=False
 /processorParam:TextureFormat=Color
 /build:Image1.png
+
+#begin song.mp3
+/importer:Mp3Importer
+/processor:SongProcessor
+/processorParam:Quality=Best
+/build:song.mp3
 

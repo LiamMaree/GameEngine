@@ -2,6 +2,7 @@
 using Microsoft.Xna.Framework.Input;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
 using System.Text;
@@ -29,70 +30,42 @@ namespace GameEngine
         
         public bool IsKeyPressed(Keys pressedKey)
         {
-            bool temp = false;
-            currentKeyboardState = Keyboard.GetState();
-            if (currentKeyboardState.IsKeyDown(pressedKey) && previousKeyboardState.IsKeyUp(pressedKey))
-            {
-                temp = true;
-            }
+            return currentKeyboardState.IsKeyDown(pressedKey) && previousKeyboardState.IsKeyUp(pressedKey);
+        }
+        public void Update()
+        {
             previousKeyboardState = currentKeyboardState;
-            return temp;
+            currentKeyboardState = Keyboard.GetState();
+
+            previousMouseState = currentMouseState;
+            currentMouseState = Mouse.GetState();
         }
         public bool IsMousePressed(bool isLeft)
         {
-            bool temp = false;
-            currentMouseState = Mouse.GetState();
+            
             if(isLeft == true)
             {
-                if (currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Released)
-                {
-                    temp = true;
-                }
+                return (currentMouseState.LeftButton == ButtonState.Pressed &&  previousMouseState.LeftButton == ButtonState.Released);
             }
             else
             {
-                if (currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released)
-                {
-                    temp = true;
-                }
+                return (currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Released);
             }
-            
-            previousMouseState = currentMouseState;
-            return temp;
         }
         public bool IsKeyHeld(Keys pressedKey)
         {
-            bool temp = false;
-            currentKeyboardState = Keyboard.GetState();
-            if (currentKeyboardState.IsKeyDown(pressedKey) && previousKeyboardState.IsKeyDown(pressedKey))
-            {
-                temp = true;
-            }
-            previousKeyboardState = currentKeyboardState;
-            return temp;
+            return (currentKeyboardState.IsKeyDown(pressedKey) && previousKeyboardState.IsKeyDown(pressedKey));
         }
         public bool IsMouseHeld(bool isLeft)
         {
-            bool temp = false;
-            currentMouseState = Mouse.GetState();
             if (isLeft == true)
             {
-                if (currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed)
-                {
-                    temp = true;
-                }
-                
+                return (currentMouseState.LeftButton == ButtonState.Pressed && previousMouseState.LeftButton == ButtonState.Pressed);
             }
             else
             {
-                if (currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Pressed)
-                {
-                    temp = true;
-                }
+                return (currentMouseState.RightButton == ButtonState.Pressed && previousMouseState.RightButton == ButtonState.Pressed);
             }
-
-            previousMouseState = currentMouseState;
-            return temp;
         }
         public Rectangle GetMouseRectangle()
         {

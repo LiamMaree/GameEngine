@@ -10,7 +10,10 @@ namespace GameEngine
 {
     public interface IScenes
     {
-        
+        public void Initialize(Game game)
+        {
+
+        }
         public void Update(GameTime gameTime)
         {
 

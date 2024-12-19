@@ -16,9 +16,10 @@ namespace GameEngine
         {
             sManager = new Dictionary<String, IScenes>();
         }
-        public void setCurrentScene(String currentScene)
+        public void setCurrentScene(String currentScene,Game game)
         {
             this.currentScene = currentScene;
+            sManager[currentScene].Initialize(game);
         }
         public void Update(GameTime gameTime)
         {

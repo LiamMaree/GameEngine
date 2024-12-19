@@ -12,7 +12,7 @@ namespace gameEngineTest
         private SpriteBatch _spriteBatch;
         
         public static SceneManager sceneManager;
-        public InputHandler inputHandler;
+        
         public Game1()
         {
             _graphics = new GraphicsDeviceManager(this);
@@ -27,13 +27,12 @@ namespace gameEngineTest
             // TODO: Add your initialization logic here
             
             sceneManager = new SceneManager();
-            inputHandler = new InputHandler();
+            
 
-            TestScene test = new TestScene(inputHandler,_graphics);
-            EmptyScene empty = new EmptyScene(inputHandler);
-            sceneManager.AddScene("TEST", test);
-            sceneManager.AddScene("EMPTY", empty);
-            sceneManager.setCurrentScene("TEST");
+            TestScene test = new TestScene(_graphics);
+            
+            sceneManager.AddScene("TEST", test);    
+            sceneManager.setCurrentScene("TEST",this);
 
             base.Initialize();
         }
