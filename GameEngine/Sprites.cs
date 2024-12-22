@@ -1,10 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Xna.Framework;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using System;
 
 namespace GameEngine
 {
@@ -21,34 +17,38 @@ namespace GameEngine
         {
             get
             {
-                return new Rectangle((int)(position.X - (size.X/2)), (int)(position.Y - (size.Y / 2)),(int)size.X, (int)size.Y);
+                return new Rectangle((int)(position.X - (size.X / 2)), (int)(position.Y - (size.Y / 2)), (int)size.X, (int)size.Y);
             }
         }
-        public Sprites(String name,String textureName,Vector2 position,Vector2 size)
+        public Sprites(String name, String textureName, Vector2 position, Vector2 size)
         {
             this.textureName = textureName;
             this.position = position;
             this.size = size;
             this.name = name;
         }
+        public virtual void Initialize(Game game)
+        {
+
+        }
 
         public virtual void Update(GameTime gameTime)
         {
-            
+
         }
-        public void Load(Game game)
+        public virtual void Load(Game game)
         {
             texture = game.Content.Load<Texture2D>(textureName);
         }
-        public void Draw(SpriteBatch batch)
+        public virtual void Draw(SpriteBatch batch)
         {
 
-            
+
             batch.Draw(texture, destRect, Color.White);
-            
+
         }
 
-        
-       
-    }     
+
+
+    }
 }

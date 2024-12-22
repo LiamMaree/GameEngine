@@ -1,23 +1,19 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameEngine
 {
     public class SoundEffectManager
     {
         protected Dictionary<String, SoundEffect> soundManager;
-        
+
         public SoundEffectManager()
         {
             soundManager = new Dictionary<String, SoundEffect>();
         }
-        
+
         public void AddSound(String soundName, String soundFileName, Game game)
         {
             soundManager.Add(soundName, game.Content.Load<SoundEffect>(soundFileName));
@@ -34,6 +30,6 @@ namespace GameEngine
         {
             return soundManager[soundName].CreateInstance();
         }
-        
+
     }
 }

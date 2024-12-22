@@ -1,11 +1,7 @@
 ﻿using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
 using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameEngine
 {
@@ -14,8 +10,8 @@ namespace GameEngine
         protected Dictionary<String, Song> songManager;
         protected String currentSong;
         protected int volume;
-        
-        
+
+
         public SongManager(int volume)
         {
             songManager = new Dictionary<String, Song>();
@@ -43,15 +39,15 @@ namespace GameEngine
             if (MediaPlayer.State != MediaState.Playing)
             {
                 MediaPlayer.Play(songManager[currentSong]);  // Start playback
-                if(repeating == true)
+                if (repeating == true)
                 {
                     MediaPlayer.IsRepeating = true;     // Enable looping
                 }
             }
-            
+
         }
         public void PauseCurrentSong()
-        {           
+        {
             if (MediaPlayer.State == MediaState.Playing)  // Only pause if playing
             {
                 MediaPlayer.Pause();
@@ -59,7 +55,7 @@ namespace GameEngine
         }
         public void ResumeCurrentSong()
         {
-            
+
             if (MediaPlayer.State == MediaState.Paused)  // Only resume if paused
             {
                 MediaPlayer.Resume();

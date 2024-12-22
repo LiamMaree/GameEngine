@@ -2,9 +2,6 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace GameEngine
 {
@@ -16,7 +13,7 @@ namespace GameEngine
         {
             sManager = new Dictionary<String, IScenes>();
         }
-        public void SetCurrentScene(String currentScene,Game game)
+        public void SetCurrentScene(String currentScene, Game game)
         {
             this.currentScene = currentScene;
             sManager[currentScene].Initialize(game);
@@ -33,7 +30,7 @@ namespace GameEngine
         {
             sManager[currentScene].Draw(batch);
         }
-        public void AddScene(String sceneName,IScenes scene)
+        public void AddScene(String sceneName, IScenes scene)
         {
             sManager.Add(sceneName, scene);
         }
