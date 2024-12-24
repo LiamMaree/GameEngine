@@ -1,7 +1,8 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input;
+using System.Diagnostics;
 
-namespace GameEngine
+namespace NinjaPacman
 {
 
     //Handles all User Inputs
@@ -47,6 +48,7 @@ namespace GameEngine
         }
         public bool IsKeyHeld(Keys pressedKey)
         {
+            
             return (currentKeyboardState.IsKeyDown(pressedKey) && previousKeyboardState.IsKeyDown(pressedKey));
         }
         public bool IsMouseHeld(bool isLeft)

@@ -2,11 +2,11 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace GameEngine
+namespace NinjaPacman
 {
     public class AnimatedSprite : Sprites
     {
-        AnimationManager animationManager;
+        protected AnimationManager animationManager;
         public AnimatedSprite(String name, AnimationManager animationManager, Vector2 position, Vector2 size) : base(name, null, position, size)
         {
             this.animationManager = animationManager;

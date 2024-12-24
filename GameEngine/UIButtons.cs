@@ -2,7 +2,7 @@
 using System;
 
 
-namespace GameEngine
+namespace NinjaPacman
 {
     public class UIButtons : Sprites
     {

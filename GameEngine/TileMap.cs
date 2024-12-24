@@ -9,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GameEngine
+namespace NinjaPacman
 {
     public class TileMap
     {
@@ -58,7 +58,7 @@ namespace GameEngine
             }
             layers.Add(result);
         }
-        public void AddCollisionLayer(String fileLocation,int emptySpaceID)
+        public void AddCollisionLayer(String fileLocation,int emptySpaceID,int ColliderSize)
         {
 
 
@@ -72,7 +72,7 @@ namespace GameEngine
                 for (int i = 0; i < items.Length; i++)
                 {
                     if (int.Parse(items[i]) != emptySpaceID)
-                    result.Add(new Rectangle(i*tileSize, y*tileSize,tileSize,tileSize));
+                    result.Add(new Rectangle(i*tileSize, y*tileSize,ColliderSize, ColliderSize));
                 }
                 y++;
             }
@@ -81,6 +81,19 @@ namespace GameEngine
         public Rectangle[] getCollisionLayer()
         {
             return collisionLayer;
+        }
+        public bool isColliding(Rectangle rect)
+        {
+            bool temp = false;
+            foreach(Rectangle collider in collisionLayer)
+            {
+                if(collider.Intersects(rect))
+                {
+                    temp = true;
+                    break;
+                }
+            }
+            return temp;
         }
         public Rectangle GetTileMapBounds()
         {

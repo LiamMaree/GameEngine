@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Audio;
 using System;
 using System.Collections.Generic;
 
-namespace GameEngine
+namespace NinjaPacman
 {
     public class SoundEffectManager
     {

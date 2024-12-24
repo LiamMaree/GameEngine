@@ -2,7 +2,7 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 
-namespace GameEngine
+namespace NinjaPacman
 {
     public class Sprites
     {

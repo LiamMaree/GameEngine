@@ -3,7 +3,7 @@ using Microsoft.Xna.Framework.Media;
 using System;
 using System.Collections.Generic;
 
-namespace GameEngine
+namespace NinjaPacman
 {
     public class SongManager
     {

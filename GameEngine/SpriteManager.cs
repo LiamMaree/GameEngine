@@ -2,22 +2,31 @@
 using Microsoft.Xna.Framework.Graphics;
 using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 
-namespace GameEngine
+namespace NinjaPacman
 {
     public class SpriteManager
     {
         protected List<Sprites> spriteList;
         protected List<Sprites> spritesToDelete;
-        public SpriteManager()
+        protected List<Sprites> spritesToAdd;
+        protected Game game;
+        public SpriteManager(Game game)
         {
+            this.game = game;
             spriteList = new List<Sprites>();
             spritesToDelete = new List<Sprites>();
+            spritesToAdd = new List<Sprites>();
         }
         public void AddSprite(Sprites sprite)
         {
             spriteList.Add(sprite);
+        }
+        public void AddSpriteRunTime(Sprites sprite)
+        {
+            spritesToAdd.Add(sprite);
         }
         public void DeleteSprite(Sprites sprite)
         {
@@ -56,8 +65,16 @@ namespace GameEngine
             foreach (Sprites sprite in spriteList)
             {
                 sprite.Update(gameTime);
+                
             }
+            
+            foreach (Sprites sprite in spritesToAdd)
+            {
+                spriteList.Add(sprite);
+                Load(game);
 
+            }
+            spritesToAdd.Clear();
             foreach (Sprites sprite in spritesToDelete)
             {
                 spriteList.Remove(sprite);
@@ -66,6 +83,7 @@ namespace GameEngine
         }
         public void Load(Game game)
         {
+            
             foreach (Sprites sprite in spriteList)
             {
                 sprite.Load(game);
