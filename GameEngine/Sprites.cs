@@ -8,7 +8,7 @@ namespace NinjaPacman
     {
         public String textureName { get; set; }
         protected Texture2D texture;
-        public Vector2 position { get; set; }
+        public Vector2 position;
         public Vector2 size { get; set; }
         public String name;
 

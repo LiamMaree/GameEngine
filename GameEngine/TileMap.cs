@@ -58,7 +58,7 @@ namespace NinjaPacman
             }
             layers.Add(result);
         }
-        public void AddCollisionLayer(String fileLocation,int emptySpaceID,int ColliderSize)
+        public void AddCollisionLayer(String fileLocation,int emptySpaceID,int collidorSize)
         {
 
 
@@ -66,13 +66,14 @@ namespace NinjaPacman
             StreamReader reader = new StreamReader(fileLocation);
             String line;
             int y = 0;
+            int offset = (tileSize - collidorSize) / 2;
             while ((line = reader.ReadLine()) != null)
             {
                 String[] items = line.Split(',');
                 for (int i = 0; i < items.Length; i++)
                 {
                     if (int.Parse(items[i]) != emptySpaceID)
-                    result.Add(new Rectangle(i*tileSize, y*tileSize,ColliderSize, ColliderSize));
+                    result.Add(new Rectangle(i*tileSize + offset, y*tileSize + offset,collidorSize, collidorSize));
                 }
                 y++;
             }
