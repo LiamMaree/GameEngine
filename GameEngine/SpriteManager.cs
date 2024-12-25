@@ -9,7 +9,7 @@ namespace NinjaPacman
 {
     public class SpriteManager
     {
-        protected List<Sprites> spriteList;
+        public List<Sprites> spriteList;
         protected List<Sprites> spritesToDelete;
         protected List<Sprites> spritesToAdd;
         protected Game game;
@@ -30,13 +30,10 @@ namespace NinjaPacman
         }
         public void DeleteSprite(Sprites sprite)
         {
-
             spritesToDelete.Add(sprite);
-
         }
         public void DeleteSpriteByName(String name)
         {
-
             spriteList.Remove(GetSpriteByName(name));
 
         }
