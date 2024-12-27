@@ -17,6 +17,7 @@ namespace NinjaPacman
         {
             this.currentScene = currentScene;
             sManager[currentScene].Initialize(game);
+            sManager[currentScene].Load(game);
         }
         public void Update(GameTime gameTime)
         {

@@ -19,11 +19,15 @@ namespace NinjaPacman
         float frameTime;
         public bool tempAnimationPlaying { get; set; }
         String previousAnimation;
+        int frameRate;
+        int previousFrameRate;
+        
         public AnimationManager(int frameRate, String spriteSheetName, int numOfRows, int numOfColumns, Point frameSize, Point offset)
         {
             allFrames = new List<Rectangle>();
             Animations = new Dictionary<string, Rectangle[]>();
             frameTime = 1f / frameRate;
+            this.frameRate = frameRate;
             this.spriteSheetName = spriteSheetName;
             for (int j = 0; j < numOfRows; j++) // Outer loop for rows
             {
@@ -42,7 +46,7 @@ namespace NinjaPacman
         {
             Animations.Add(name, allFrames.GetRange(startFrame, endFrame - startFrame + 1).ToArray());
         }
-        public void PlayAnimation(String name,bool onceOFF)
+        public void PlayAnimation(String name,bool onceOFF,int frameRate)
         {
             if(onceOFF == true)
             {
@@ -54,7 +58,15 @@ namespace NinjaPacman
                 currentAnimation = name;
                 activeFrame = 0;
             }
-
+            if(frameRate == 0)
+            {
+                frameTime = 1f / this.frameRate;
+            }
+            else
+            {
+                frameTime = 1f / frameRate;
+            }
+            previousFrameRate = (int)(1f / frameTime);
         }
         public int GetActiveFrame()
         {
@@ -81,7 +93,7 @@ namespace NinjaPacman
                     activeFrame = 0;
                     if(tempAnimationPlaying == true)
                     {
-                        currentAnimation = previousAnimation;
+                        PlayAnimation(previousAnimation, false, previousFrameRate);
                         tempAnimationPlaying = false;
                     }
                 }

@@ -83,7 +83,7 @@ namespace NinjaPacman
         {
             return collisionLayer;
         }
-        public bool isColliding(Rectangle rect)
+        public bool IsColliding(Rectangle rect)
         {
             bool temp = false;
             foreach(Rectangle collider in collisionLayer)
@@ -95,6 +95,18 @@ namespace NinjaPacman
                 }
             }
             return temp;
+        }
+        public Vector2[] getTilePosition(int layer, int tileTarget)
+        {
+            List<Vector2> tileArr = new List<Vector2>();
+            foreach (var tile in layers[layer])
+            {
+                if(tile.Value == tileTarget)
+                {
+                    tileArr.Add(new Vector2(tileSize*(tile.Key.X) + (tileSize/2), tileSize*(tile.Key.Y) + (tileSize / 2)));
+                }
+            }
+            return tileArr.ToArray();
         }
         public Rectangle GetTileMapBounds()
         {
