@@ -19,6 +19,10 @@ namespace NinjaPacman
             sManager[currentScene].Initialize(game);
             sManager[currentScene].Load(game);
         }
+        public IScenes GetScene(String scene)
+        {
+            return sManager[scene];
+        }
         public void Update(GameTime gameTime)
         {
             sManager[currentScene].Update(gameTime);

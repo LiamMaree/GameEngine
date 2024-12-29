@@ -18,17 +18,17 @@ namespace NinjaPacman
             this.volume = volume;
             MediaPlayer.Volume = volume;
         }
-        public void SetCurrentSong(String currentSound)
+        public void SetCurrentSong(String currentSong)
         {
-            this.currentSong = currentSound;
+            this.currentSong = currentSong;
         }
         public void SetVolume(int volume)
         {
             this.volume = volume;
         }
-        public void AddSong(String soundName, String songFileName, Game game)
+        public void AddSong(String songName, String songFileName, Game game)
         {
-            songManager.Add(soundName, game.Content.Load<Song>(songFileName));
+            songManager.Add(songName, game.Content.Load<Song>(songFileName));
         }
         public void RemoveScene(String songName)
         {

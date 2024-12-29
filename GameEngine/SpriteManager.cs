@@ -26,6 +26,7 @@ namespace NinjaPacman
         }
         public void AddSpriteRunTime(Sprites sprite)
         {
+            sprite.Initialize(game);
             spritesToAdd.Add(sprite);
         }
         public void DeleteSprite(Sprites sprite)
@@ -56,7 +57,14 @@ namespace NinjaPacman
 
             spriteList = spriteList.OrderByDescending(keySelector).ToList();
         }
+        public void Initialize(Game game)
+        {
+            foreach (Sprites sprite in spriteList)
+            {
+                sprite.Initialize(game);
 
+            }
+        }
         public void Update(GameTime gameTime)
         {
             foreach (Sprites sprite in spriteList)
