@@ -7,4 +7,9 @@
       <PrivateAssets>All</PrivateAssets>
     </PackageReference>
   </ItemGroup>
+  <ItemGroup>
+    <Reference Include="GameEngine">
+      <HintPath>..\..\..\..\Documents\Libraries\GameEngine.dll</HintPath>
+    </Reference>
+  </ItemGroup>
 </Project>
