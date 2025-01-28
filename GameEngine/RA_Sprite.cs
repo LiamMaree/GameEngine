@@ -23,7 +23,7 @@ namespace GameEngine
                 destRect,
                 animationManager.getCurrentFrame(),
                 Color.White,
-                rotation,
+                (float)(rotation * (Math.PI / 180)),
                 new Vector2(animationManager.getCurrentFrame().Width / 2, animationManager.getCurrentFrame().Height / 2),
                 SpriteEffects.None,
                 0.0f);
