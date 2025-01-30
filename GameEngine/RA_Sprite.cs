@@ -16,7 +16,15 @@ namespace GameEngine
         {
             this.rotation = rotation;
         }
-
+        public override void Update(GameTime gameTime)
+        {
+            base.Update(gameTime);
+            rotation %= 360;
+            if (rotation < 0)
+            {
+                rotation += 360;
+            }
+        }
         public override void Draw(SpriteBatch batch)
         {
             batch.Draw(animationManager.getSpriteSheet(),
