@@ -11,17 +11,28 @@ namespace NinjaPacman
         public Vector2 position;
         public Vector2 size { get; set; }
         public String name;
+        public float collisionSize;
+        
+        
 
         //Creates Rectangle of Sprite and updates it to the sprites current position
-        public Rectangle destRect
+        public virtual Rectangle destRect
         {
             get
             {
                 return new Rectangle((int)(position.X - (size.X / 2)), (int)(position.Y - (size.Y / 2)), (int)size.X, (int)size.Y);
             }
         }
-        public Sprites(String name, String textureName, Vector2 position, Vector2 size)
+        public virtual Rectangle colRect
         {
+            get
+            {
+                return new Rectangle((int)(position.X - ((size.X / 2) * collisionSize)), (int)(position.Y - ((size.Y / 2) * collisionSize)), (int)(size.X * collisionSize), (int)(size.Y * collisionSize));
+            }
+        }
+        public Sprites(String name, String textureName, Vector2 position, Vector2 size, float collisionSize)
+        {
+            this.collisionSize = collisionSize;
             this.textureName = textureName;
             this.position = position;
             this.size = size;
@@ -39,13 +50,14 @@ namespace NinjaPacman
         public virtual void Load(Game game)
         {
             texture = game.Content.Load<Texture2D>(textureName);
+            
         }
         public virtual void Draw(SpriteBatch batch)
         {
 
-
+            
             batch.Draw(texture, destRect, Color.White);
-
+            
         }
 
 

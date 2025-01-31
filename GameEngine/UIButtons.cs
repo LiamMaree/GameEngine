@@ -8,7 +8,7 @@ namespace NinjaPacman
     {
         InputHandler inputHandeler;
 
-        public UIButtons(String name, String textureName, Vector2 position, Vector2 size, InputHandler inputHandeler) : base(name, textureName, position, size)
+        public UIButtons(String name, String textureName, Vector2 position, Vector2 size, InputHandler inputHandeler, float collisionSize) : base(name, textureName, position, size,collisionSize)
         {
             this.inputHandeler = inputHandeler;
 

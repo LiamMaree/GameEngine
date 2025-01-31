@@ -7,9 +7,11 @@ namespace NinjaPacman
     public class AnimatedSprite : Sprites
     {
         protected AnimationManager animationManager;
-        public AnimatedSprite(String name, AnimationManager animationManager, Vector2 position, Vector2 size) : base(name, null, position, size)
+        
+        public AnimatedSprite(String name, AnimationManager animationManager, Vector2 position, Vector2 size, float collisionSize) : base(name, null, position, size,collisionSize)
         {
             this.animationManager = animationManager;
+            
         }
         public override void Update(GameTime gameTime)
         {
@@ -19,7 +21,6 @@ namespace NinjaPacman
         public override void Load(Game game)
         {
             animationManager.Load(game);
-
         }
         public override void Draw(SpriteBatch batch)
         {
